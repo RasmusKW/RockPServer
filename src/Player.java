@@ -3,7 +3,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-
+// a separate Player class 
 public class Player {
 	
 	private Socket socket;	
@@ -39,20 +39,23 @@ public class Player {
 	}
 	
 	void askWantToStartGame(){
+		
+		//using a try/catch exception handling
 		try {
+			//receives the players' answers on whether they want to start a game
 			 wantToStartGame = fromClient.readUTF();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
 	String getWantToStartGame(){
 		return wantToStartGame;
 	}
 	
 	void setUsername(){
 		try {
+			//reads what the users set as their username
 			username = fromClient.readUTF();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -62,6 +65,7 @@ public class Player {
 	
 	void setTool(){
 		try {
+			//reads what tools each client chooses
 			tool = fromClient.readInt();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -71,6 +75,7 @@ public class Player {
 	
 	void setPlayAgain(){
 		try {
+			//reads users' choice on whether they want to continue playing the game
 			playAgain = fromClient.readUTF();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
